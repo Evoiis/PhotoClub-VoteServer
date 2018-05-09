@@ -42,3 +42,14 @@ app.post('/Login',function(req,res){
         //go to admin page
     }
 });
+
+app.post('/Vote',function(req,res){
+    console.log(req.method," request: ", req.url);
+    console.log("body = ",req.body);
+
+    var Vote = req.body.Vote;
+
+    console.log("Vote = ", Vote);
+    //add vote to database...
+    res.end();
+});

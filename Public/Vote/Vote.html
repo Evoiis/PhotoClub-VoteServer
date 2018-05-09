@@ -12,9 +12,15 @@
         <h4>Voting Page</h4> 
     </div>
     
-    <p id='text'></p>
-
     <img src="./Vote/test.png" alt="test image" height="100px" weight="100px" />
+    
+    <form onsubmit="sendVote();return false;" >
+      Enter a number between 0 and 10:
+      <input type="number" id="voteNum" name="voteNum" min="0" max="10" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="text"></p>
 
     <script src ="./jquery.min.js"></script>
     <script src="./socket.io.min.js"></script>
