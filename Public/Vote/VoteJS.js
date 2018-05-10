@@ -1,13 +1,13 @@
 function sendVote(){
-
+    var score = $('#voteNum').val();
     $.ajax({
         method: 'post',
         url: '/Vote',
-        data: 'Vote= ' +$('#voteNum').val(),
-        success: VoteSent()
+        data: 'Vote= ' + score,
+        success: VoteSent(score)
     });
 }
 
-function VoteSent(){
-    $('#text').html("Vote submitted successfully!");
+function VoteSent(score){
+    $('#text').html("Score submitted successfully! You entered: " + score);
 }
