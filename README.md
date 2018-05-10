@@ -27,6 +27,7 @@ Login page:
 Form with string input for the session code.
 Clients will enter the randomly generated code to login to the voting page from the login page.
 And then be assigned their user_session_id
+Check local storage/cookies for a previous cookie credential (namely user_session_id) from the SAME DAY.  If previous credential not found, prompt for username and look for that and session code.
 
 Voting page:
 Form with number input (3 categories)
