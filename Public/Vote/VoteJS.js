@@ -1,10 +1,13 @@
 function sendVote(){
-    var score = $('#voteNum').val();
+    var cat1score = $('#cat1').val();
+    var cat2score = $('#cat2').val();
+    var cat3score = $('#cat3').val();
+
     $.ajax({
         method: 'post',
         url: '/Vote',
-        data: 'Vote= ' + score,
-        success: VoteSent(score)
+        data: 'Cat1= ' + cat1score + '&Cat2=' + cat2score + '&Cat3=' + cat3score,
+        success: VoteSent(cat1score)
     });
 }
 
