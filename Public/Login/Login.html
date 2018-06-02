@@ -14,12 +14,10 @@
     
     <p id='text'></p>
 
-    <form action="/Login" method="POST" >
+    <form onsubmit='return false;'>
         Username:<br>
         <input type="text" id="Username" name="Username" placeholder="Username" />
-        <br>Password:<br>
-        <input type="password" id="Password" name="Password" placeholder="Password" />
-        <br>
+        <div id='pwContainer'></div>
         <button onclick="Login()">LOGIN</button>
     </form>
 

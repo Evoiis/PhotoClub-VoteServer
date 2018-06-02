@@ -32,6 +32,7 @@ app.post('/Login',function(req,res){
 
     var User = req.body.Username;
     var Pass = req.body.Password;
+    console.log('Pass = ', Pass);
 
     if(User == "1"){ //Replace with <Random Gen Code>
         //go to vote page

@@ -1,12 +1,28 @@
 var Username = '';
+var flag = 0;
 function Login(){
     Username = $('#Username').val();
-    $.ajax({
-        method: 'post',
-        url: '/Login',
-        data: 'Username=' + Username + '&Password=' + $('#Password').val()
-        //success: 
-    });
+    if(Username == "admin"){
+        if(flag == 0){
+            var pwHTML = '<br>Password:<br><input type="password" id="Password" name="Password" placeholder="Password"/><br>';
+            $('#pwContainer').html(pwHTML);
+            flag  = 1;
+        }else{
+            $.ajax({
+                method: 'post',
+                url: '/Login',
+                data: 'Username=' + Username + '&Password=' + $('#Password').val()
+                //success: 
+            });
+        }
+    }else{
+        $.ajax({
+            method: 'post',
+            url: '/Login',
+            data: 'Username=' + Username 
+            //success: 
+        });
+    }
 }
 
 //-----socket
