@@ -19,10 +19,18 @@ function Login(){
         $.ajax({
             method: 'post',
             url: '/Login',
-            data: 'Username=' + Username 
-            //success: 
+            data: 'Username=' + Username,
+            success: foo
         });
     }
+}
+
+function foo(data){
+    console.log("Hello");
+    //console.log("File = ", data);
+    //console.log(window.document);
+    //window.location.href = "/Vote/Vote.html";
+    window.document.write(data);
 }
 
 //-----socket

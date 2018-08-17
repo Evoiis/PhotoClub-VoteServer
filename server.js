@@ -29,14 +29,12 @@ app.use(express.static(__dirname +"/Public",options));
 
 app.post('/Login',function(req,res){
     console.log(req.method,' request: ', req.url);
-
     var User = req.body.Username;
     var Pass = req.body.Password;
-    console.log('Pass = ', Pass);
+    console.log('Username = ', User,'PassAttempt = ', Pass);
 
     if(User == "1"){ //Replace with <Random Gen Code>
         //go to vote page
-        console.log("Point A");
         res.sendFile(__dirname + "/Public/Vote/Vote.html");
     }
     if(User == "<Diff Random Gen Code>"){
