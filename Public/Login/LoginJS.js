@@ -2,6 +2,7 @@ var Username = '';
 var flag = 0;
 function Login(){
     Username = $('#Username').val();
+    /*
     if(Username == "admin"){
         if(flag == 0){
             var pwHTML = '<br>Password:<br><input type="password" id="Password" name="Password" placeholder="Password"/><br>';
@@ -16,14 +17,15 @@ function Login(){
             });
         }
     }else{
+    */
         $.ajax({
             method: 'post',
             url: '/Login',
             data: 'Username=' + Username,
-            success: foo
+            success: foo 
         });
     }
-}
+//}
 
 function foo(data){
     console.log("Hello");

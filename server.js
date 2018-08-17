@@ -11,7 +11,9 @@ console.log("Server running on port ", port);
 var io = require('socket.io')(server);
 
 io.on('connection',function(socket){
+    socket.on('name', function(param){
 
+    });
 });
 
 var options = {
@@ -37,8 +39,13 @@ app.post('/Login',function(req,res){
         //go to vote page
         res.sendFile(__dirname + "/Public/Vote/Vote.html");
     }
-    if(User == "<Diff Random Gen Code>"){
+    if(User == "admin"){
         //go to admin page
+        res.sendFile(__dirname + "/Admin/AdminPage.html");
+    }
+    if(User == "projection"){
+        //go to projection page
+        res.sendFile(__dirname + "/Admin/ProjectPage.html");
     }
 });
 
