@@ -33,11 +33,13 @@ Voting page:
 Form with number input (3 categories)
 Submit score button
 NoScore button (enters NULL score)
-Back button (return to previous score)
 No pop-ups
 Add thumbnail of the photo they are currently scoring
 Form submits score to server, server then saves the score to database.
-After voting, goes to waiting page that waits for the admin to start the next vote.  (may not be necessary)
+
+-Back button (return to previous score)
+OR
+-After voting, goes to waiting page that waits for the admin to start the next vote.  (may not be necessary)
 
 Projection page:
 Controlled from admin page

@@ -4,8 +4,9 @@ var socketid;
 socket.on('connect', function(){
     socketid = socket.id;
 
-    socket.emit('reqSlide', socketid);
+    socket.emit('projectini', socketid);
+    
 
-    socket.on('', picture);
+    //socket.on('', picture);
 
 });

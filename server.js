@@ -1,21 +1,41 @@
-
 var express = require('express');
 var app = express();
 var http = require('http');
+var mysql = require('mysql');
 var port = process.env.PORT || 8080;
 
 var server = http.createServer(app);
 server.listen(port);
 console.log("Server running on port ", port);
 
+//socket
 var io = require('socket.io')(server);
 
 io.on('connection',function(socket){
     socket.on('name', function(param){
+    
+    });
 
+    socket.on('projectini', function(socketid){
+        socketid.join('projections');
     });
 });
+/*
+//mysql
+var con = mysql.createConnection({
+    host: 'localhost',
+    user: 'antho',
+    password: 'compass',
+    insecureAuth : true,
+    port: 3306
+});
 
+con.connect(function(err){
+    if(err) throw err;
+    console.log("MySQL connected!");
+});
+*/
+//express
 var options = {
     dotfiles: 'ignore',
     etag: false,
@@ -45,7 +65,7 @@ app.post('/Login',function(req,res){
     }
     if(User == "projection"){
         //go to projection page
-        res.sendFile(__dirname + "/Admin/ProjectPage.html");
+        res.sendFile(__dirname + "/Admin/ProjectionPage.html");
     }
 });
 
