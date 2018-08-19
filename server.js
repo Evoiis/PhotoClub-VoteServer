@@ -11,15 +11,49 @@ console.log("Server running on port ", port);
 //socket
 var io = require('socket.io')(server);
 
+
 io.on('connection',function(socket){
-    socket.on('name', function(param){
+    /*template
+    socket.on('name', function(args){
     
     });
+    */
 
-    socket.on('projectini', function(socketid){
-        socketid.join('projections');
+    socket.on('ProjectIni', function(){
+        console.log("New projection added.");
+        socket.join('projections');
+        
+        /*
+        Maybe do:
+        
+        currphoto,global server var, set from admin socket
+
+        if currphoto != null
+            send currphoto
+        else
+            send vote no start
+        
+        */
+
     });
+
+    //admin.js update projections
+    socket.on('UpdateProjections', function(photo_id){
+        console.log("Photo id = ", photo_id);
+        //Use photo_id to query for photo from mysql then send new_photo to projections?
+        var new_photo = null;
+        socket.to("projections").emit('Update',new_photo);
+    });
+
+    socket.on('QueryPhoto', function(photo_id){
+        //Use photo_id to query for photo from mysql then send back photo
+        var new_photo = "new photo";
+        socket.emit('NewPhoto',new_photo)
+    });
+
 });
+
+
 /*
 //mysql
 var con = mysql.createConnection({
@@ -59,7 +93,9 @@ app.post('/Login',function(req,res){
         //go to vote page
         res.sendFile(__dirname + "/Public/Vote/Vote.html");
     }
-    if(User == "admin"){
+
+    //LOGIN PAGE QUERY TO LIMIT # ADMIN PAGES?
+    if(User == "admin"){//Change admin to something else OR require password for admin
         //go to admin page
         res.sendFile(__dirname + "/Admin/AdminPage.html");
     }

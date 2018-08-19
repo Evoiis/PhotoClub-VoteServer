@@ -10,6 +10,7 @@ socket.on('connect', function(){
 
 //socket.emit('');
 
-function change_photo(forward){
-    
+function update_projection(forward){
+    var photo_id = null;
+    socket.emit('UpdateProjections',photo_id);
 }

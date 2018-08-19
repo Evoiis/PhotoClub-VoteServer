@@ -1,12 +1,13 @@
 var socket = io.connect('http://localhost:8080');
-var socketid;
 
 socket.on('connect', function(){
-    socketid = socket.id;
-
-    socket.emit('projectini', socketid);
+    socket.emit('ProjectIni');
     
-
     //socket.on('', picture);
+});
 
+socket.on('Update', function(new_photo){
+    //console.log("Server sent: ", new_photo);
+    //$('#IDforIMAGEobject OR useIMGtag').attr('src','new_photo');
+    
 });
