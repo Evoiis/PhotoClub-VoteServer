@@ -13,7 +13,10 @@
     </div>
     
     <img src="./Vote/test.png" alt="test image" height="100px" weight="100px" />
-    
+    <br>
+    <button id="forward" onclick="QueryPhotoID(true)">Next</button>
+    <button id="back" onclick="QueryPhotoID(false)">Previous</button>
+
     <form onsubmit="sendVote();return false;" >
       Enter a number between 0 and 10:
       <br>
@@ -23,6 +26,8 @@
       <br>
       <button type="submit">Submit</button>
     </form>
+
+    
 
     <p id="text"></p>
 

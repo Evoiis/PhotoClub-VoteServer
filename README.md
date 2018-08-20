@@ -21,39 +21,46 @@ Each user should get a unique-token, so that can go back and forth between their
 
 Socket:
 Use socket.io to broadcast imgs.
-Access photos in directory. /Photos
+Access photos in directory. /Photos OR from database?
 
 Login page: 
-Form with string input for the session code.
-Clients will enter the randomly generated code to login to the voting page from the login page.
+/Form with string input for the session code.
+/Clients will enter the randomly generated code to login to the voting page from the login page.
 And then be assigned their user_session_id
 Check local storage/cookies for a previous cookie credential (namely user_session_id) from the SAME DAY.  If previous credential not found, prompt for username and look for that and session code.
 
 Voting page:
-Form with number input (3 categories)
-Submit score button
+/Form with number input (3 categories)
+Submit score button that also sends in matching photo_id with data
 NoScore button (enters NULL score)
 No pop-ups
-Add thumbnail of the photo they are currently scoring
+/Add thumbnail of the photo they are currently scoring
 Form submits score to server, server then saves the score to database.
 
--Back button (return to previous score)
-OR
--After voting, goes to waiting page that waits for the admin to start the next vote.  (may not be necessary)
+/Back and Forward button (return to previous score)
+
+NOPE>> After voting, goes to waiting page that waits for the admin to start the next vote.
 
 Projection page:
-Controlled from admin page
-Shown on-screen
-Controls to advance image displayed
+/Controlled from admin page
+/Shown on-screen
+NOPE>> Controls to advance image displayed (CONTROLS ON ADMIN PAGE)
 Will also show session_code at the start
 
-
 Admin page:
-Admin can login to the page through the same login page using diff credentials.
+/Admin can login to the page through the same login page using diff credentials.
 Have active count of # votes shown to admin. So we know if everyone has voted or there are too many votes.  (good idea)
 Function to start next vote, will broadcast the next image through socketio and begin the vote.
-Pick an image from /Photos.
+Pick an image from /Photos. 
+OR
+Query photo from database? maybe if it can be done
 
-Results page?:
+Results page?: (Maybe just add this as a feature to Projection page)
 After all voting is done. Admin can request a results page.
 Will show each photo's stats (#votes, mean score)
+
+Most important TODOs as of AUG20:
+-Math on scores with results at the end
+-Session on vote screen (matching data to persons)
+-Matching voting data to photos
+-MySQL database and querying for photos

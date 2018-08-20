@@ -22,12 +22,12 @@ function Login(){
             method: 'post',
             url: '/Login',
             data: 'Username=' + Username,
-            success: foo 
+            success: UpdatePage 
         });
     }
 //}
 
-function foo(data){
+function UpdatePage(data){
     console.log("Hello");
     //console.log("File = ", data);
     //console.log(window.document);

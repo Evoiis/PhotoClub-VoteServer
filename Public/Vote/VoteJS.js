@@ -1,4 +1,17 @@
-function sendVote(){
+var photo_id = 0;
+var socket = io.connect('http://localhost:8080');
+
+socket.on('connect', function(){
+    //onconnect
+    //? dunno if i need this
+});
+
+socket.on('NewPhoto', function(data){
+    //console.log("Data = ", data);
+    //$('#IDforIMAGEobject OR useIMGtag').attr('src','new_photo');
+});
+
+function SendVote(){
     var cat1score = $('#cat1').val();
     var cat2score = $('#cat2').val();
     var cat3score = $('#cat3').val();
@@ -17,18 +30,14 @@ function VoteSent(scores){
 }
 
 //Ask server for photo with photo_id
-function QueryPhotoID(photo_id){
+function QueryPhotoID(forward){
+    if(forward){
+        photo_id += 1;
+    }else{
+        if(photo_id != 0){
+            photo_id -= 1;
+        }
+    }
     socket.emit('QueryPhoto',photo_id);
 }
 
-var socket = io.connect('http://localhost:8080');
-var socketid;
-
-socket.on('connect', function(){
-
-});
-
-socket.on('NewPhoto', function(data){
-    console.log("Thing is: ", data);
-    //$('#IDforIMAGEobject OR useIMGtag').attr('src','new_photo');
-});

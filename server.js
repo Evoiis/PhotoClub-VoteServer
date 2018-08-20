@@ -11,6 +11,7 @@ console.log("Server running on port ", port);
 //socket
 var io = require('socket.io')(server);
 
+var curr_photo_id = 0;
 
 io.on('connection',function(socket){
     /*template
@@ -19,13 +20,15 @@ io.on('connection',function(socket){
     });
     */
 
+    socket.on('AdminIni', function(socketid){
+        socket.emit('AdminIniResponse', curr_photo_id);
+    });
+
     socket.on('ProjectIni', function(){
         console.log("New projection added.");
         socket.join('projections');
         
-        /*
-        Maybe do:
-        
+        /*        
         currphoto,global server var, set from admin socket
 
         if currphoto != null
@@ -39,10 +42,11 @@ io.on('connection',function(socket){
 
     //admin.js update projections
     socket.on('UpdateProjections', function(photo_id){
-        console.log("Photo id = ", photo_id);
+        //console.log("Photo id = ", photo_id);
         //Use photo_id to query for photo from mysql then send new_photo to projections?
+        curr_photo_id = photo_id;
         var new_photo = null;
-        socket.to("projections").emit('Update',new_photo);
+        socket.to("projections").emit('Update',new_photo,photo_id);
     });
 
     socket.on('QueryPhoto', function(photo_id){
@@ -52,8 +56,6 @@ io.on('connection',function(socket){
     });
 
 });
-
-
 /*
 //mysql
 var con = mysql.createConnection({
