@@ -12,40 +12,42 @@ console.log("Server running on port ", port);
 var io = require('socket.io')(server);
 
 var curr_photo_id = 0;
+var next_vote_id = 0;
 
 io.on('connection',function(socket){
-    /*template
-    socket.on('name', function(args){
-    
-    });
-    */
-
     socket.on('AdminIni', function(socketid){
         socket.emit('AdminIniResponse', curr_photo_id);
     });
 
     socket.on('ProjectIni', function(){
         console.log("New projection added.");
+        //Add new projection page into projections socket room
         socket.join('projections');
         
         /*        
-        currphoto,global server var, set from admin socket
-
-        if currphoto != null
-            send currphoto
-        else
-            send vote no start
-        
+        curr_photo_id
+        query for curr_photo then send to projection
         */
 
     });
 
+    socket.on('VoteIni', function(){
+        console.log("Sending vote_id =", next_vote_id);
+        socket.emit('SendVoteID',next_vote_id);
+        next_vote_id += 1;
+    });
+
     //admin.js update projections
-    socket.on('UpdateProjections', function(photo_id){
+    socket.on('ChangePhotoID', function(photo_id){
         //console.log("Photo id = ", photo_id);
-        //Use photo_id to query for photo from mysql then send new_photo to projections?
+        
+        //sync admin photo_id and curr_photo_id
         curr_photo_id = photo_id;
+        
+        //Use photo_id to query for photo from mysql then send new_photo to projections?
         var new_photo = null;
+
+        //update projection screens
         socket.to("projections").emit('Update',new_photo,photo_id);
     });
 
@@ -95,8 +97,9 @@ app.post('/Login',function(req,res){
         //go to vote page
         res.sendFile(__dirname + "/Public/Vote/Vote.html");
     }
-
     //LOGIN PAGE QUERY TO LIMIT # ADMIN PAGES?
+        //with current syncing of photo_id, best if only 1 admin page allowed
+        //can add a broadcast of new curr_photo_id onchange
     if(User == "admin"){//Change admin to something else OR require password for admin
         //go to admin page
         res.sendFile(__dirname + "/Admin/AdminPage.html");

@@ -31,12 +31,15 @@ Check local storage/cookies for a previous cookie credential (namely user_sessio
 
 Voting page:
 /Form with number input (3 categories)
-Submit score button that also sends in matching photo_id with data
+Submit vote button
+	-Vote button also sends voteID and photoID
 NoScore button (enters NULL score)
-No pop-ups
+	-OR just tell users to not enter any numbers in
+		-null will be sent
+/No pop-ups
 /Add thumbnail of the photo they are currently scoring
 Form submits score to server, server then saves the score to database.
-
+Return person's voting results after last photo?
 /Back and Forward button (return to previous score)
 
 NOPE>> After voting, goes to waiting page that waits for the admin to start the next vote.
@@ -55,12 +58,16 @@ Pick an image from /Photos.
 OR
 Query photo from database? maybe if it can be done
 
-Results page?: (Maybe just add this as a feature to Projection page)
+Results page: 
+(Maybe just add this as a feature to Projection page)
 After all voting is done. Admin can request a results page.
 Will show each photo's stats (#votes, mean score)
 
 Most important TODOs as of AUG20:
--Math on scores with results at the end
--Session on vote screen (matching data to persons)
+/-Matching data to persons (Session on vote screen)
 -Matching voting data to photos
 -MySQL database and querying for photos
+Lesser:
+-Math on scores with results at the end
+-Admin page show status
+-HTML page UI improvements

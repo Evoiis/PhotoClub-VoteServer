@@ -7,9 +7,6 @@ socket.on('connect', function(){
     //ask for current image,# of votes,etc...
     socket.emit('AdminIni', socketid);
     
-
-    //socket.on('', picture);
-
 });
 
 socket.on('AdminIniResponse',function(server_photo_id){
@@ -24,5 +21,5 @@ function update_projection(forward){
             photo_id -= 1;
         }
     }
-    socket.emit('UpdateProjections',photo_id);
+    socket.emit('ChangePhotoID',photo_id);
 }

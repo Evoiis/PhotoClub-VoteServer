@@ -28,7 +28,6 @@ function Login(){
 //}
 
 function UpdatePage(data){
-    console.log("Hello");
     //console.log("File = ", data);
     //console.log(window.document);
     //window.location.href = "/Vote/Vote.html";

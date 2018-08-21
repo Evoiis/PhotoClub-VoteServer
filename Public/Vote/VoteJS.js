@@ -1,9 +1,16 @@
-var photo_id = 0;
 var socket = io.connect('http://localhost:8080');
+var photo_id,vote_id;
 
 socket.on('connect', function(){
-    //onconnect
-    //? dunno if i need this
+    //onconnect ask for voting ID
+    vote_id = localStorage.getItem('VotingID');
+    if(vote_id != null){
+        socket.emit('VoteIni');
+    }
+});
+
+socket.on('connect_error', function(err){
+    console.log("Error: ",err);
 });
 
 socket.on('NewPhoto', function(data){
@@ -11,16 +18,19 @@ socket.on('NewPhoto', function(data){
     //$('#IDforIMAGEobject OR useIMGtag').attr('src','new_photo');
 });
 
+socket.on('SendVoteID', function(number){
+    vote_id = number;
+    console.log("Num = ",vote_id);
+    localStorage.setItem('VotingID',number);
+});
+
 function SendVote(){
-    var cat1score = $('#cat1').val();
-    var cat2score = $('#cat2').val();
-    var cat3score = $('#cat3').val();
     //get rid of ^^, replace with:
-    var scores = [cat1score,cat2score,cat3score];
+    var scores = [ $('#cat1').val(), $('#cat2').val(),$('#cat3').val()];
     $.ajax({
         method: 'post',
         url: '/Vote',
-        data: 'Cat1= ' + cat1score + '&Cat2=' + cat2score + '&Cat3=' + cat3score,
+        data: 'VoteID= ' + vote_id + '&Cat1= ' + scores[0] + '&Cat2=' + scores[1] + '&Cat3=' + scores[2],
         success: VoteSent(scores)
     });
 }
@@ -40,4 +50,3 @@ function QueryPhotoID(forward){
     }
     socket.emit('QueryPhoto',photo_id);
 }
-
