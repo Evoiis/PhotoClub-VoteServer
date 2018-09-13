@@ -12,11 +12,12 @@ console.log("Server running on port ", port);
 var io = require('socket.io')(server);
 
 var curr_photo_id = 0;
-var next_vote_id = 0;
+var next_vote_id = 0; 
+//equal to number of voters
 
 io.on('connection',function(socket){
     socket.on('AdminIni', function(socketid){
-        socket.emit('AdminIniResponse', curr_photo_id);
+        socket.emit('AdminIniResponse', curr_photo_id,next_vote_id);
     });
 
     socket.on('ProjectIni', function(){

@@ -1,5 +1,6 @@
 var socket = io.connect('http://localhost:8080');
-var photo_id,vote_id;
+var vote_id;
+var photo_id = 0;
 
 socket.on('connect', function(){
     //onconnect ask for voting ID
@@ -25,12 +26,12 @@ socket.on('SendVoteID', function(number){
 });
 
 function SendVote(){
-    //get rid of ^^, replace with:
+    //rename cats to actual category names
     var scores = [ $('#cat1').val(), $('#cat2').val(),$('#cat3').val()];
     $.ajax({
         method: 'post',
         url: '/Vote',
-        data: 'VoteID= ' + vote_id + '&Cat1= ' + scores[0] + '&Cat2=' + scores[1] + '&Cat3=' + scores[2],
+        data: 'VoteID= ' + vote_id + '&PhotoID= ' + photo_id + '&Cat1= ' + scores[0] + '&Cat2=' + scores[1] + '&Cat3=' + scores[2],
         success: VoteSent(scores)
     });
 }

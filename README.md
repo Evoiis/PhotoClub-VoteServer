@@ -68,8 +68,8 @@ Will show each photo's stats (#votes, mean score)
 
 Most important TODOs as of AUG20:
 /-Matching data to persons (Session on vote screen)
--Matching voting data to photos
--MySQL database and querying for photos
+/-Matching voting data to photos
+-MySQL database
 Lesser:
 -Math on scores with results at the end
 -Admin page show status
