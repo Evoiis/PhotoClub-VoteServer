@@ -9,5 +9,6 @@ socket.on('connect', function(){
 socket.on('Update', function(new_photo,photo_id){
     //console.log("Server sent: ", new_photo);
     $('#PhotoNumber').html(photo_id);
-    //$('img').attr('src','new_photo');
+    var newSrc = "./Photos/" + new_photo;
+    $('img').attr('src',newSrc);
 });

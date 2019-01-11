@@ -14,9 +14,10 @@ socket.on('connect_error', function(err){
     console.log("Error: ",err);
 });
 
-socket.on('NewPhoto', function(data){
+socket.on('NewPhoto', function(new_photo){
     //console.log("Data = ", data);
-    //$('#IDforIMAGEobject OR useIMGtag').attr('src','new_photo');
+    var newSrc = "./Photos/" + new_photo;
+    $('img').attr('src',newSrc);
 });
 
 socket.on('SendVoteID', function(number){
