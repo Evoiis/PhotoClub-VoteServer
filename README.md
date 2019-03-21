@@ -25,15 +25,15 @@ Vote page:
 * Form submits score to server, server then saves the score to database.
 * Back and Forward button (change which photo to vote on)
 * VoteID assigned when user joins
-*	if prev VoteID assigned, the previous one will be used
-*	id is stored in localstorage of user's browser
-*		allows user to close tab and re-open tab but still have the same ID
+	* if prev VoteID assigned, the previous one will be used
+	* id is stored in localstorage of user's browser
+		* allows user to close tab and re-open tab but still have the same ID
 
 Projection page:
 * Shown on projection screen at the fron of the room
 * Controlled from admin page
 * Shows photo
-*	changes with controls from admin page (code written, NOT tested)
+	* changes with controls from admin page (code written, NOT tested)
 
 Admin page:
 * Admin can login to the page through the same login page using diff credentials.
