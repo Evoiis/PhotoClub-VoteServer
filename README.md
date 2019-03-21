@@ -45,4 +45,4 @@ Notes:
 
 The final score for each photo will be out of 30.  It is a sum of the scores in all 3 categories.
 
-For a single photo, average all the scores in a category.  Note that an artist will not score his own photo.  Thereofre, the number of scores will differ per photo.  ex.  if you have 4 photos by 3 artists, then one artist "Bob", submitted 2 photos.  Bob will not score his own photos.  Therefore, Bob's 2 photos will only have scores by the other 2 artists.
+For a single photo, average each category.  Note an artist will not score his own photo.  Therefore, the number of scores can differ per photo.  ex.  if you have 4 photos by 3 artists, then one artist "Bob", submitted 2 photos.  Bob will not score his own photos and his 2 photos will have scores from 2 people only.
